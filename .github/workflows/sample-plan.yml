@@ -1,0 +1,28 @@
+name: Sample Plan
+on:
+  schedule:
+    - cron: '*/5 * * * *' # Polling trigger (every 5 minutes)
+  workflow_dispatch:
+
+env:
+  GLOBAL_VARIABLE: global_variable_value
+  PLAN_VARIABLE_OVERRIDE: plan_variable_overrid
+
+jobs:
+  build:
+    name: Build the rocket stage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.0
+      - name: Build rocket
+        run: |
+          mkdir -p falcon/red
+          echo wings > falcon/red/wings
+          sleep 1
+          echo 'Built it'
+      - name: Upload Red rocket built artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Red rocket built
+          path: falcon/red/wings
