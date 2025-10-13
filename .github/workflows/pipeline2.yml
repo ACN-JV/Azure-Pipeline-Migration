@@ -1,17 +1,21 @@
 name: AzurePipelineMigration/pipelines/pipeline2
+
 on:
   push:
     branches:
-    - main
+      - main
+
 jobs:
   build:
-runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@v4.1.0
-    - name: Run a one-line script
-      run: echo Hello, I am pipeline 2!
-    - name: Run a multi-line script
-      run: |-
-        echo Add other tasks to build, test, and deploy your project.
-        echo See https://aka.ms/yaml
+      - name: Checkout code
+        uses: actions/checkout@v4.1.0
+
+      - name: Run a one-line script
+        run: echo "Hello, I am pipeline 2!"
+
+      - name: Run a multi-line script
+        run: |
+          echo "Add other tasks to build, test, and deploy your project."
+          echo "See https://aka.ms/yaml"
