@@ -5,9 +5,7 @@ on:
     - main
 jobs:
   build:
-    runs-on:
-      - self-hosted
-      - mechamachine
+runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v4.1.0
