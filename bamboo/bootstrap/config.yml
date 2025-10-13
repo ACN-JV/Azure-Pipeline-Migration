@@ -1,6 +1,7 @@
+bamboo_url: http://your-bamboo-server:8085
+bamboo_pat: YOUR_BAMBOO_PAT
 source_files:
   - repository_slug: SAM/SAMPLE
     path: bamboo/bootstrap/source_files/bamboo/bamboo.yml
   - repository_slug: DEMO/MAR
     path: bamboo/bootstrap/source_files/bonnie/source.yml
-
