@@ -1,12 +1,13 @@
 name: Sample Plan
+
 on:
   schedule:
-    - cron: '*/5 * * * *' # Polling trigger (every 5 minutes)
+    - cron: '*/5 * * * *' # Run every 5 minutes
   workflow_dispatch:
 
 env:
   GLOBAL_VARIABLE: global_variable_value
-  PLAN_VARIABLE_OVERRIDE: plan_variable_overrid
+  PLAN_VARIABLE_OVERRIDE: plan_variable_override
 
 jobs:
   build:
@@ -15,12 +16,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.1.0
+
       - name: Build rocket
         run: |
           mkdir -p falcon/red
           echo wings > falcon/red/wings
+          echo "Global: $GLOBAL_VARIABLE"
+          echo "Override: $PLAN_VARIABLE_OVERRIDE"
           sleep 1
           echo 'Built it'
+
       - name: Upload Red rocket built artifact
         uses: actions/upload-artifact@v3
         with:
